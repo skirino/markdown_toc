@@ -31,12 +31,17 @@ class Heading
   end
 end
 
-if ARGV.empty?
-  print_usage
-else
-  paths = ARGV.select { |path| File.file?(path) }
+def gen_toc_lines(paths)
   headings = paths.uniq.flat_map do |path|
     File.readlines(path).grep(/^#+ /).map { |l| Heading.new(path, l) }
   end
-  puts headings.map(&:to_toc_item_line).join("\n")
+  headings.map(&:to_toc_item_line)
+end
+
+if __FILE__ == $0
+  if ARGV.empty?
+    print_usage
+  else
+    puts gen_toc_lines(ARGV.select { |path| File.file?(path) }).join("\n")
+  end
 end
