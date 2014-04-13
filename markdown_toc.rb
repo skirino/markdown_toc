@@ -8,7 +8,7 @@ Usage:
   #{$0} <file1> <file2> ... : Output TOC generated from the given files to STDOUT.
 Note:
   Command line arguments are expected to be relative paths to markdown files.
-  The order of TOC items are preserved.
+  The order of TOC items is preserved.
 USAGE
 end
 
