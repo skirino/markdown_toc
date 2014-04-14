@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'cgi'
+
 INDENT_SPACES = '    '
 
 def print_usage
@@ -20,12 +22,13 @@ class Heading
   end
 
   def to_toc_item_line
+    section_name = CGI.escape(@text.downcase.gsub(' ', '-').gsub(/[!-,:-@\[-\^{-~.\/`]/, ''))
     [
       INDENT_SPACES * (@level - 1),
       '- [',
       @text,
       '](',
-      './' + @filepath + '#' + @text.downcase.gsub(' ', '-').gsub(/[^\w_-]/, ''),
+      './' + @filepath + '#' + section_name,
       ')'
     ].join('')
   end
