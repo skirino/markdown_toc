@@ -15,7 +15,7 @@ Usage:
     <start-marker> deaults to '#{START_MARKER_DEFAULT}' and <end-marker> defaults to '#{END_MARKER_DEFAULT}'.
 Note:
   Markdown file paths are expected to be relative to the current directory.
-  The order of TOC items are preserved.
+  The items in the generated TOC are ordered aoccording to the order of input files.
 USAGE
 end
 
