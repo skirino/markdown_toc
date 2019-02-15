@@ -43,8 +43,8 @@ class InsertTocCommand
 
   def gen_new_file_content
     lines = File.readlines(@dest_file).map(&:chomp)
-    i = lines.index(@start_marker) or raise 'start-marker not found in dest-file!'
-    j = lines[i .. -1].index(@end_marker) or raise 'end-marker not found in dest-file!'
+    i = lines.index(@start_marker) or raise "start-marker not found in dest-file! #{@dest_file}"
+    j = lines[i .. -1].index(@end_marker) or raise "end-marker not found in dest-file! #{@dest_file}"
     updated_lines = lines[0 .. i] + [''] + gen_toc_lines(@files) + [''] + lines[i+j .. -1] + ['']
     updated_lines.join("\n")
   end
