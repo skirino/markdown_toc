@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# coding: utf-8
 
 require 'cgi'
 
@@ -22,7 +23,7 @@ class Heading
   end
 
   def to_toc_item_line
-    section_name = CGI.escape(@text.downcase.gsub(' ', '-').gsub(/[!-,:-@\[-\^{-~.\/`]/, ''))
+    section_name = CGI.escape(@text.downcase.gsub(' ', '-').gsub(/[!-,:-@\[-\^{-~.\/`]/, '').gsub('、', '').gsub('「', '').gsub('」', ''))
     [
       INDENT_SPACES * (@level - 1),
       '- [',
